@@ -6,6 +6,7 @@
       {{price}}
       <button @click="addOne">add</button>
       <button @click="minusOne">minus</button>
+      <button @click="getQuery">获取参数</button>
   </div>
 </template>
 <script>
@@ -27,6 +28,9 @@ export default {
     minusOne () {
       this.$store.commit('decrement',this.price);
     },
+    getQuery() {
+      console.log(this.$route)
+    }
   }
 };
 </script>

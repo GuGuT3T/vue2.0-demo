@@ -3,8 +3,9 @@
     <img src="./assets/logo.png" alt="">
     <!-- 路由匹配到的组件将渲染在这里 -->
     <router-link :to="'apple'" tag='li'>Go to apple</router-link> // 可以传入字符串 tag指定li
-    <router-link :to="{path:'banana'}">Go to banana</router-link>
-    <router-link :to="{path:'banana/red'}">Go to redBanana</router-link>
+    <router-link :to="{name:'banana',params:{testArr}}">Go to banana</router-link>
+    <div @click="toBanana">跳转路由banana</div>
+    <router-link :to="{path:'/red'}">Go to redBanana</router-link>
     <br>// 命名路由
     <!-- <router-link :to="{name:'applePage'}">Go to applePage</router-link> -->
     
@@ -21,6 +22,23 @@ export default {
   components: {
     // hello
   },
+  data () {
+    return {
+      testArr: {
+        gyk: {
+          id: 1
+        },
+        hb: {
+          id: 2
+        }
+      },
+    }
+  },
+   methods: {
+        toBanana () {
+          console.log(this.$router.push({path:'/banana',query: {testArr:this.testArr}}))
+        }
+      }
 };
 </script>
 
